@@ -39,7 +39,9 @@
                 "INSERT INTO " + schema + ".TOPIC VALUES (NEXT VALUE FOR TOPIC_GEN, 'Computer Science')",
                 "INSERT INTO " + schema + ".COMMENT VALUES (NEXT VALUE FOR COMMENT_GEN, 'Skeleton code', 1)",
                 "INSERT INTO " + schema + ".COMMENT VALUES (NEXT VALUE FOR COMMENT_GEN, 'for homework1', 1)",
-                "INSERT INTO " + schema + ".CREDENTIALS VALUES (NEXT VALUE FOR CREDENTIALS_GEN, 'sob', 'sob')"
+                "INSERT INTO " + schema + ".CREDENTIALS VALUES (NEXT VALUE FOR CREDENTIALS_GEN, 'sob', 'sob')",
+                //"INSERT INTO " + schema + ".USER VALUES (NEXT VALUE FOR USER_GEN, 'angelgasc@gmail.com', 'Angel Gascon', 'pass169989*', '222222')"
+                "INSERT INTO " + schema + ".COIN VALUES (NEXT VALUE FOR COIN_GEN, 'Generic description.', 'Bitcoin', 500000.0, '2000-1-1-12.00.00.000000')"
             };
             for (String datum : data) {
                 if (stmt.executeUpdate(datum)<=0) {
