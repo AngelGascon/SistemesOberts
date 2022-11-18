@@ -25,7 +25,7 @@ public class Purchase implements Serializable {
     @OneToOne
     private Coin coin;
     @ManyToOne
-    private User user;
+    private Client client;
     
     public Purchase() {
         
@@ -51,8 +51,8 @@ public class Purchase implements Serializable {
         return coin;
     }
 
-    public User getUser() {
-        return user;
+    public Client getClient() {
+        return client;
     }
 
     public void setId(int id) {
@@ -71,13 +71,13 @@ public class Purchase implements Serializable {
         this.coin = coin;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setClient(Client client) {
+        this.client = client;
     }
 
     @Override
     public String toString() {
-        return "Purchase{" + "id=" + id + ", amount=" + amount + ", date=" + date + ", coin=" + coin + ", user=" + user + '}';
+        return "Purchase{" + "id=" + id + ", amount=" + amount + ", date=" + date + ", coin=" + coin + ", client=" + client + '}';
     }
     
 }

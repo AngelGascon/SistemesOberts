@@ -40,8 +40,9 @@
                 "INSERT INTO " + schema + ".COMMENT VALUES (NEXT VALUE FOR COMMENT_GEN, 'Skeleton code', 1)",
                 "INSERT INTO " + schema + ".COMMENT VALUES (NEXT VALUE FOR COMMENT_GEN, 'for homework1', 1)",
                 "INSERT INTO " + schema + ".CREDENTIALS VALUES (NEXT VALUE FOR CREDENTIALS_GEN, 'sob', 'sob')",
-                //"INSERT INTO " + schema + ".USER VALUES (NEXT VALUE FOR USER_GEN, 'angelgasc@gmail.com', 'Angel Gascon', 'pass169989*', '222222')"
-                "INSERT INTO " + schema + ".COIN VALUES (NEXT VALUE FOR COIN_GEN, 'Generic description.', 'Bitcoin', 500000.0, '2000-1-1-12.00.00.000000')"
+                "INSERT INTO " + schema + ".COIN VALUES (NEXT VALUE FOR COIN_GEN, '2021-03-02 11:24:00.772000000', 'Generic description.', 500000.0, 'Bitcoin')",
+                "INSERT INTO " + schema + ".CLIENT VALUES (NEXT VALUE FOR CLIENT_GEN, 'generic@gmail.com', 'Angel', 'password', '607223456)",
+                "INSERT INTO " + schema + ".PURCHASE VALUES (NEXT VALUE FOR PURCHASE_GEN, 6000.0, '2021-05-02 09:30:00.222000000',1,1)"
             };
             for (String datum : data) {
                 if (stmt.executeUpdate(datum)<=0) {

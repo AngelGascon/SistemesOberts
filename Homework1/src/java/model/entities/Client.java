@@ -17,35 +17,21 @@ import java.util.Collection;
 
 @Entity
 @XmlRootElement
-public class User implements Serializable {
+public class Client implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
-    @SequenceGenerator(name = "User_Gen", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "User_Gen")
+    @SequenceGenerator(name = "Client_Gen", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Client_Gen")
     private int id;
     @Column(unique=true)
     private String email;
     private String name;
     private String password;
     private String phone;
-    @ManyToMany(mappedBy = "users")
-    final private Collection<Coin> coins;
-    @OneToMany(mappedBy = "user")
-    final private Collection<Purchase> purchases;
-    
-    public User() {
-        this.purchases = new ArrayList<>();
-        this.coins = new ArrayList<>();
-    }
-
-    public User(String name, String mail, String password, String phone) {
-        this.name = name;
-        this.email = mail;
-        this.password = password;
-        this.phone = phone;
-        this.purchases = new ArrayList<>();
-        this.coins = new ArrayList<>();
-    }
+    @ManyToMany(mappedBy = "clients")
+    private Collection<Coin> coins;
+    @OneToMany(mappedBy = "client")
+    private Collection<Purchase> purchases;
 
     public static long getSerialVersionUID() {
         return serialVersionUID;

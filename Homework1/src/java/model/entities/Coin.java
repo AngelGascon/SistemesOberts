@@ -29,22 +29,10 @@ public class Coin implements Serializable {
     private Date currentDate;
     
     @ManyToMany
-    private Collection<User> users;
+    private Collection<Client> clients;
     @OneToOne(mappedBy = "coin")
     private Purchase purchase;
 
-    public Coin() {
-        
-    }
-
-    public Coin(String name, String description, float lastQuotation, Date currentDate) {
-        this.name = name;
-        this.description = description;
-        this.lastQuotation = lastQuotation;
-        this.currentDate = currentDate;
-        this.users = new ArrayList<>();
-    }
-    
     public static long getSerialVersionUID() {
         return serialVersionUID;
     }
@@ -69,8 +57,8 @@ public class Coin implements Serializable {
         return currentDate;
     }
 
-    public Collection<User> getUsers() {
-        return users;
+    public Collection<Client> getClients() {
+        return clients;
     }
 
     public Purchase getPurchase() {
@@ -97,8 +85,8 @@ public class Coin implements Serializable {
         this.currentDate = currentDate;
     }
 
-    public void setUsers(Collection<User> users) {
-        this.users = users;
+    public void setClients(Collection<Client> clients) {
+        this.clients = clients;
     }
 
     public void setPurchase(Purchase purchase) {
@@ -107,7 +95,7 @@ public class Coin implements Serializable {
 
     @Override
     public String toString() {
-        return "Coin{" + "id=" + id + ", name=" + name + ", description=" + description + ", lastQuotation=" + lastQuotation + ", currentDate=" + currentDate + ", users=" + users + ", purchase=" + purchase + '}';
+        return "Coin{" + "id=" + id + ", name=" + name + ", description=" + description + ", lastQuotation=" + lastQuotation + ", currentDate=" + currentDate + ", clients=" + clients + ", purchase=" + purchase + '}';
     }
     
 }
