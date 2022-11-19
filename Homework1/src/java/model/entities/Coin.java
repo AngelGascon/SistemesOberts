@@ -9,6 +9,7 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
+import jakarta.validation.constraints.NotNull;
 //import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import java.util.ArrayList;
@@ -21,7 +22,7 @@ public class Coin implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @SequenceGenerator(name="Coin_Gen", allocationSize=1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Coin_Gen") 
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="Coin_Gen") 
     private int id;
     private String name;
     private String description;

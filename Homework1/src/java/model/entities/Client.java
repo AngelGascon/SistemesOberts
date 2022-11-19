@@ -10,6 +10,7 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
+import jakarta.validation.constraints.NotNull;
 //import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import java.util.ArrayList;
@@ -20,18 +21,23 @@ import java.util.Collection;
 public class Client implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
-    @SequenceGenerator(name = "Client_Gen", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Client_Gen")
+    @SequenceGenerator(name="Client_Gen", allocationSize = 1)
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="Client_Gen")
     private int id;
-    @Column(unique=true)
     private String email;
     private String name;
     private String password;
     private String phone;
+    
     @ManyToMany(mappedBy = "clients")
-    private Collection<Coin> coins;
+    final private Collection<Coin> coins;
     @OneToMany(mappedBy = "client")
-    private Collection<Purchase> purchases;
+    final private Collection<Purchase> purchases;
+    
+    public Client() {
+        this.purchases = new ArrayList<>();
+        this.coins = new ArrayList<>();
+    }
 
     public static long getSerialVersionUID() {
         return serialVersionUID;
@@ -83,19 +89,6 @@ public class Client implements Serializable {
 
     public void setPhone(String phone) {
         this.phone = phone;
-    }
-
-    public void addPurchase(Purchase purchase) {
-        this.purchases.add(purchase);
-    }
-
-    public void addCoin(Coin coin) {
-        this.coins.add(coin);
-    }
-
-    @Override
-    public String toString() {
-        return "User{" + "id=" + id + ", email=" + email + ", name=" + name + ", password=" + password + ", phone=" + phone + ", coins=" + coins + ", purchases=" + purchases + '}';
     }
     
 }

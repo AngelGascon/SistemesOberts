@@ -14,7 +14,13 @@ import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import authn.Secured;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Root;
+import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.core.Response.Status;
+import java.util.ArrayList;
 import model.entities.Coin;
 
 @Stateless
@@ -57,10 +63,27 @@ public class CoinFacadeREST extends AbstractFacade<Coin> {
     }
 
     @GET
-    @Override
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public List<Coin> findAll() {
-        return super.findAll();
+    public Response findAll(@QueryParam("order") String order) {
+        // https://www.baeldung.com/hibernate-criteria-queries
+        List<Coin> listResult = new ArrayList<>();
+        CriteriaBuilder cb = em.getCriteriaBuilder();
+        CriteriaQuery<Coin> cq = cb.createQuery(Coin.class);
+        Root<Coin> root = cq.from(Coin.class);
+        
+        if(order == null)
+            order = "desc";
+        
+        if(order.equals("asc")){
+            listResult = em.createQuery(cq.select(root).orderBy(cb.asc(root.get("lastQuotation")))).getResultList();
+        }else if(order.equals("desc")){
+            listResult = em.createQuery(cq.select(root).orderBy(cb.desc(root.get("lastQuotation")))).getResultList();
+        }
+        //tot ok
+        if(listResult != null)
+            return Response.ok(listResult).build();
+        //error
+        return Response.status(Status.BAD_REQUEST).entity("You should use asc or desc").build();
     }
 
     @GET
