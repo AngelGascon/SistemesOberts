@@ -58,14 +58,6 @@ public class Coin implements Serializable {
         return currentDate;
     }
 
-    public Collection<Client> getClients() {
-        return clients;
-    }
-
-    public Purchase getPurchase() {
-        return purchase;
-    }
-
     public void setId(int id) {
         this.id = id;
     }
@@ -86,17 +78,9 @@ public class Coin implements Serializable {
         this.currentDate = currentDate;
     }
 
-    public void setClients(Collection<Client> clients) {
-        this.clients = clients;
-    }
-
-    public void setPurchase(Purchase purchase) {
-        this.purchase = purchase;
-    }
-
     @Override
     public String toString() {
-        return "Coin{" + "id=" + id + ", name=" + name + ", description=" + description + ", lastQuotation=" + lastQuotation + ", currentDate=" + currentDate + ", clients=" + clients + ", purchase=" + purchase + '}';
+        return "Coin{" + "name=" + name + ", description=" + description + ", lastQuotation=" + lastQuotation + ", currentDate=" + currentDate + '}';
     }
     
 }

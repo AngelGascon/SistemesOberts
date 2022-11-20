@@ -66,24 +66,25 @@ public class CoinFacadeREST extends AbstractFacade<Coin> {
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public Response findAll(@QueryParam("order") String order) {
         // https://www.baeldung.com/hibernate-criteria-queries
+        // Homework1/rest/api/v1/coin?order=asc
+        // Homework1/rest/api/v1/coin?order=error
         List<Coin> listResult = new ArrayList<>();
         CriteriaBuilder cb = em.getCriteriaBuilder();
         CriteriaQuery<Coin> cq = cb.createQuery(Coin.class);
         Root<Coin> root = cq.from(Coin.class);
         
-        if(order == null)
+        if(order.isEmpty())
             order = "desc";
         
-        if(order.equals("asc")){
+        if(order.equalsIgnoreCase("asc")){
             listResult = em.createQuery(cq.select(root).orderBy(cb.asc(root.get("lastQuotation")))).getResultList();
-        }else if(order.equals("desc")){
+        }else if(order.equalsIgnoreCase("desc")){
             listResult = em.createQuery(cq.select(root).orderBy(cb.desc(root.get("lastQuotation")))).getResultList();
+        }else {
+            return Response.status(Status.BAD_REQUEST).build();
         }
-        //tot ok
-        if(listResult != null)
-            return Response.ok(listResult).build();
-        //error
-        return Response.status(Status.BAD_REQUEST).entity("You should use asc or desc").build();
+        
+        return Response.ok(listResult).build();
     }
 
     @GET
