@@ -34,6 +34,15 @@ public class Client implements Serializable {
     @OneToMany(mappedBy = "client")
     final private Collection<Purchase> purchases;
     
+    public Client(int id, String name, String email, String phone) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
+        this.purchases = new ArrayList<>();
+        this.coins = new ArrayList<>();
+    }
+    
     public Client() {
         this.purchases = new ArrayList<>();
         this.coins = new ArrayList<>();
@@ -61,14 +70,6 @@ public class Client implements Serializable {
 
     public String getPhone() {
         return phone;
-    }
-
-    public Collection<Coin> getCoins() {
-        return coins;
-    }
-
-    public Collection<Purchase> getPurchases() {
-        return purchases;
     }
 
     public void setId(int id) {

@@ -44,13 +44,13 @@ public class CoinFacadeREST extends AbstractFacade<Coin> {
     @PUT
     @Path("{id}")
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public void edit(@PathParam("id") Long id, Coin entity) {
+    public void edit(@PathParam("id") int id, Coin entity) {
         super.edit(entity);
     }
 
     @DELETE
     @Path("{id}")
-    public void remove(@PathParam("id") Long id) {
+    public void remove(@PathParam("id") int id) {
         super.remove(super.find(id));
     }
 
@@ -58,7 +58,7 @@ public class CoinFacadeREST extends AbstractFacade<Coin> {
     @Secured
     @Path("{id}")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public Response find(@PathParam("id") Long id) {
+    public Response find(@PathParam("id") int id) {
         return Response.ok().entity(super.find(id)).build();
     }
 

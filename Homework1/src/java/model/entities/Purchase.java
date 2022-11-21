@@ -27,13 +27,18 @@ public class Purchase implements Serializable {
     @ManyToOne
     private Client client;
     
-    public Purchase() {
-        
+    public Purchase() { }
+    public Purchase(int id, Date date, float amount, Client clientWithoutPasswd, Coin coin) {
+        this.id = id;
+        this.date = date;
+        this.amount = amount;
+        this.client = clientWithoutPasswd;
+        this.coin = coin;
     }
-
+    
     public static long getSerialVersionUID() {
         return serialVersionUID;
-    }
+    }    
 
     public int getId() {
         return id;
