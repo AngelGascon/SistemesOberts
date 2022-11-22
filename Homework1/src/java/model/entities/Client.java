@@ -1,29 +1,30 @@
 package model.entities;
 
-import jakarta.persistence.Column;
 import java.io.Serializable;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.NamedQuery;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
-import jakarta.validation.constraints.NotNull;
-//import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import java.util.ArrayList;
 import java.util.Collection;
 
 @Entity
+@NamedQuery(
+            name="getClientFromCredentials",
+            query="SELECT c FROM Client c WHERE c.email LIKE :mail AND c.password LIKE :pass"
+    )
 @XmlRootElement
 public class Client implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @SequenceGenerator(name="Client_Gen", allocationSize = 1)
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="Client_Gen")
-    private int id;
+    private Integer id;
     private String email;
     private String name;
     private String password;

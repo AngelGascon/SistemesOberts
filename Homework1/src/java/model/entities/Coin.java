@@ -7,6 +7,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.NamedQuery;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.validation.constraints.NotNull;
@@ -17,13 +18,17 @@ import java.util.Collection;
 import java.util.Date;
 
 @Entity
+@NamedQuery(
+            name="getCoinFromId",
+            query="SELECT c FROM Coin c WHERE c.id = :idSent"
+    )
 @XmlRootElement
 public class Coin implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @SequenceGenerator(name="Coin_Gen", allocationSize=1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="Coin_Gen") 
-    private int id;
+    private Integer id;
     private String name;
     private String description;
     private Float lastQuotation;

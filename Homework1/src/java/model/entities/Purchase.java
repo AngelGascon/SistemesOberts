@@ -8,7 +8,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
-//import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import java.util.Date;
 
@@ -38,7 +37,7 @@ public class Purchase implements Serializable {
     
     public static long getSerialVersionUID() {
         return serialVersionUID;
-    }    
+    }
 
     public int getId() {
         return id;

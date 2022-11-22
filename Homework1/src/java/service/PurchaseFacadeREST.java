@@ -15,7 +15,6 @@ import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import authn.Secured;
 import com.sun.xml.messaging.saaj.util.Base64;
-import jakarta.persistence.NoResultException;
 import jakarta.ws.rs.HeaderParam;
 import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.core.Response;
@@ -40,10 +39,34 @@ public class PurchaseFacadeREST extends AbstractFacade<Purchase> {
     @Secured
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces({MediaType.APPLICATION_JSON})
-    public Response Create(@HeaderParam("X-My-API-Key-Token") String auth, @QueryParam("coin") int coinId, float amount) {
-        //TODO   
-
-        return Response.ok().build();
+    public Response create(@HeaderParam("Authorization") String auth, @QueryParam("coin") Integer coinId, Purchase purchase) {
+        //@QueryParam("coin") int coin, @QueryParam("amount") float amount, @HeaderParam("Authorization") String auth
+        //password:angelgascmail@gmail.com == cGFzc3dvcmQ6YW5nZWxnYXNjbWFpbEBnbWFpbC5jb20=
+        String decode = Base64.base64Decode(auth.replace("Basic ", ""));
+        StringTokenizer tokenizer = new StringTokenizer(decode, ":");
+        String password = tokenizer.nextToken();
+        String mail = tokenizer.nextToken();
+        //Build Purchase = Client(mail, pass) + amount + coin(id)
+        //https://tomee.apache.org/jakartaee-10.0/javadoc/index.html?jakarta/persistence/NamedQuery.html
+        Client client = (Client) em.createNamedQuery("getClientFromCredentials")
+                .setParameter("mail", mail)
+                .setParameter("pass", password)
+                .getSingleResult();
+        Coin coin = (Coin) em.createNamedQuery("getCoinFromId")
+                .setParameter("idSent", coinId)
+                .getSingleResult();
+        
+        Date currentDate = new Date();
+        float tradeAmount = coin.getLastQuotation()*purchase.getAmount();
+        
+        purchase.setAmount(tradeAmount);
+        purchase.setDate(currentDate);
+        purchase.setClient(client);
+        purchase.setCoin(coin);
+        
+        super.create(purchase);
+        
+        return Response.ok(purchase).build();
     }
 
     @PUT
@@ -70,7 +93,7 @@ public class PurchaseFacadeREST extends AbstractFacade<Purchase> {
         Client noPassword = new Client(client.getId(), client.getName(), client.getEmail(), client.getPhone());
         Purchase noPasswordPurchase = new Purchase(order.getId(), order.getDate(), order.getAmount(), noPassword, order.getCoin());
         
-        return Response.ok(noPasswordPurchase, MediaType.APPLICATION_JSON).build();
+        return Response.ok(noPasswordPurchase).build();
     }
 
     @GET
