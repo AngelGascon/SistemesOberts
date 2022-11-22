@@ -66,7 +66,7 @@ public class PurchaseFacadeREST extends AbstractFacade<Purchase> {
         
         super.create(purchase);
         
-        return Response.ok(purchase).build();
+        return Response.ok(new Purchase(purchase.getId(), tradeAmount, currentDate)).build();
     }
 
     @PUT

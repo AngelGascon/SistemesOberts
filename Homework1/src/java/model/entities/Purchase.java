@@ -35,6 +35,12 @@ public class Purchase implements Serializable {
         this.coin = coin;
     }
     
+    public Purchase(int id, float tradeAmount, Date currentDate) {
+        this.id = id;
+        this.date = currentDate;
+        this.amount = tradeAmount;
+    }
+    
     public static long getSerialVersionUID() {
         return serialVersionUID;
     }
