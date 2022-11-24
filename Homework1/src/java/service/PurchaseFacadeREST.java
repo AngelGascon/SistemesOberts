@@ -41,11 +41,11 @@ public class PurchaseFacadeREST extends AbstractFacade<Purchase> {
     @Produces({MediaType.APPLICATION_JSON})
     public Response create(@HeaderParam("Authorization") String auth, @QueryParam("coin") Integer coinId, Purchase purchase) {
         //@QueryParam("coin") int coin, @QueryParam("amount") float amount, @HeaderParam("Authorization") String auth
-        //password:angelgascmail@gmail.com == cGFzc3dvcmQ6YW5nZWxnYXNjbWFpbEBnbWFpbC5jb20=
+        //angelgascmail@gmail.com:password == YW5nZWxnYXNjbWFpbEBnbWFpbC5jb206cGFzc3dvcmQ=
         String decode = Base64.base64Decode(auth.replace("Basic ", ""));
         StringTokenizer tokenizer = new StringTokenizer(decode, ":");
-        String password = tokenizer.nextToken();
         String mail = tokenizer.nextToken();
+        String password = tokenizer.nextToken();
         //Build Purchase = Client(mail, pass) + amount + coin(id)
         //https://tomee.apache.org/jakartaee-10.0/javadoc/index.html?jakarta/persistence/NamedQuery.html
         Client client = (Client) em.createNamedQuery("getClientFromCredentials")

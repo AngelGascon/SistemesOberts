@@ -18,6 +18,10 @@ import java.util.Collection;
             name="getClientFromCredentials",
             query="SELECT c FROM Client c WHERE c.email LIKE :mail AND c.password LIKE :pass"
     )
+@NamedQuery(
+            name="findUser", 
+            query="SELECT c FROM Client c WHERE c.email = :email"
+    )
 @XmlRootElement
 public class Client implements Serializable {
     private static final long serialVersionUID = 1L;
