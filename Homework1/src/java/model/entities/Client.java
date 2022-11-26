@@ -1,5 +1,7 @@
 package model.entities;
 
+import authn.Credentials;
+import jakarta.persistence.Column;
 import java.io.Serializable;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -8,18 +10,16 @@ import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.NamedQuery;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
+import jakarta.validation.constraints.NotNull;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import java.util.ArrayList;
 import java.util.Collection;
 
 @Entity
 @NamedQuery(
-            name="getClientFromCredentials",
-            query="SELECT c FROM Client c WHERE c.email LIKE :mail AND c.password LIKE :pass"
-    )
-@NamedQuery(
-            name="findUser", 
+            name="findClient", 
             query="SELECT c FROM Client c WHERE c.email = :email"
     )
 @XmlRootElement
@@ -29,24 +29,25 @@ public class Client implements Serializable {
     @SequenceGenerator(name="Client_Gen", allocationSize = 1)
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="Client_Gen")
     private Integer id;
+    
+    @Column(unique=true)
+    @NotNull(message="Email has to be set.")
     private String email;
+    
+    //Names can be repeated
     private String name;
-    private String password;
+    
+    @OneToOne(mappedBy="client")
+    private Credentials password;
+    
+    @Column(unique=true)
+    @NotNull(message="Phone has to be set.")
     private String phone;
     
     @ManyToMany(mappedBy = "clients")
     final private Collection<Coin> coins;
     @OneToMany(mappedBy = "client")
     final private Collection<Purchase> purchases;
-    
-    public Client(int id, String name, String email, String phone) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.phone = phone;
-        this.purchases = new ArrayList<>();
-        this.coins = new ArrayList<>();
-    }
     
     public Client() {
         this.purchases = new ArrayList<>();
@@ -69,10 +70,6 @@ public class Client implements Serializable {
         return name;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
     public String getPhone() {
         return phone;
     }
@@ -87,10 +84,6 @@ public class Client implements Serializable {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public void setPhone(String phone) {

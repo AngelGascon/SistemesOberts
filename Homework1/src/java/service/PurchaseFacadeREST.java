@@ -48,9 +48,8 @@ public class PurchaseFacadeREST extends AbstractFacade<Purchase> {
         String password = tokenizer.nextToken();
         //Build Purchase = Client(mail, pass) + amount + coin(id)
         //https://tomee.apache.org/jakartaee-10.0/javadoc/index.html?jakarta/persistence/NamedQuery.html
-        Client client = (Client) em.createNamedQuery("getClientFromCredentials")
-                .setParameter("mail", mail)
-                .setParameter("pass", password)
+        Client client = (Client) em.createNamedQuery("findClient")
+                .setParameter("email", mail)
                 .getSingleResult();
         Coin coin = (Coin) em.createNamedQuery("getCoinFromId")
                 .setParameter("idSent", coinId)
@@ -87,13 +86,7 @@ public class PurchaseFacadeREST extends AbstractFacade<Purchase> {
     @Path("{id}")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public Response find(@PathParam("id") int id) {
-        Purchase order = super.find(id);
-        
-        Client client = super.find(id).getClient();
-        Client noPassword = new Client(client.getId(), client.getName(), client.getEmail(), client.getPhone());
-        Purchase noPasswordPurchase = new Purchase(order.getId(), order.getDate(), order.getAmount(), noPassword, order.getCoin());
-        
-        return Response.ok(noPasswordPurchase).build();
+        return Response.ok(super.find(id)).build();
     }
 
     @GET
