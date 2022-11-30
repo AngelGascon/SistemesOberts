@@ -39,7 +39,8 @@
                 //Base64 client: angelgascmail@gmail.com:password == YW5nZWxnYXNjbWFpbEBnbWFpbC5jb206cGFzc3dvcmQ=
                 "INSERT INTO " + schema + ".CLIENT VALUES (NEXT VALUE FOR CLIENT_GEN, 'angelgascmail@gmail.com', 'Angel', '607223456')",
                 "INSERT INTO " + schema + ".CREDENTIALS VALUES (NEXT VALUE FOR CREDENTIALS_GEN, 'password', 1)",
-                //"INSERT INTO " + schema + ".CREDENTIALS VALUES (NEXT VALUE FOR CREDENTIALS_GEN, 'angelgascmail@gmail.com', 'password')",
+                "INSERT INTO " + schema + ".CLIENT VALUES (NEXT VALUE FOR CLIENT_GEN, 'sob@gmail.com', 'sob', '600100200')",
+                "INSERT INTO " + schema + ".CREDENTIALS VALUES (NEXT VALUE FOR CREDENTIALS_GEN, 'sob', 2)",
                 "INSERT INTO " + schema + ".COIN VALUES (NEXT VALUE FOR COIN_GEN, '2016-03-02 11:24:00.772000000', 'Generic description.', 500000.0, 'Bitcoin')",
                 "INSERT INTO " + schema + ".COIN VALUES (NEXT VALUE FOR COIN_GEN, '2021-07-02 8:24:00.772000000', 'Generic description 2.', 4000.0, 'Ethereum')",
                 "INSERT INTO " + schema + ".PURCHASE VALUES (NEXT VALUE FOR PURCHASE_GEN, 6000.0, '2021-05-02 09:30:00.222000000',1,1)"

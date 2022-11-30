@@ -45,7 +45,6 @@ public class PurchaseFacadeREST extends AbstractFacade<Purchase> {
         String decode = Base64.base64Decode(auth.replace("Basic ", ""));
         StringTokenizer tokenizer = new StringTokenizer(decode, ":");
         String mail = tokenizer.nextToken();
-        String password = tokenizer.nextToken();
         //Build Purchase = Client(mail, pass) + amount + coin(id)
         //https://tomee.apache.org/jakartaee-10.0/javadoc/index.html?jakarta/persistence/NamedQuery.html
         Client client = (Client) em.createNamedQuery("findClient")
