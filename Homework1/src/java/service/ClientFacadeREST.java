@@ -36,20 +36,21 @@ public class ClientFacadeREST extends AbstractFacade<Client> {
     }
 
     @PUT
+    @Secured
     @Path("{id}")
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public void edit(@PathParam("id") Long id, Client entity) {
+    public void edit(@PathParam("id") int id, Client entity) {
+        entity.setId(id);
         super.edit(entity);
     }
 
     @DELETE
     @Path("{id}")
-    public void remove(@PathParam("id") Long id) {
+    public void remove(@PathParam("id") int id) {
         super.remove(super.find(id));
     }
 
     @GET
-    @Secured
     @Path("{id}")
     @Produces({MediaType.APPLICATION_JSON})
     public Response find(@PathParam("id") int id) {
@@ -60,9 +61,7 @@ public class ClientFacadeREST extends AbstractFacade<Client> {
     @Produces({MediaType.APPLICATION_JSON})
     @Override
     public List findAll(){
-        //Without password
-        String client = "SELECT c.id, c.email, c.name, c.phone FROM Client c";
-        return em.createQuery(client).getResultList();
+        return super.findAll();
     }
 
     @GET

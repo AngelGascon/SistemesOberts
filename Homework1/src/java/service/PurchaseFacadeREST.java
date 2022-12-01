@@ -68,6 +68,7 @@ public class PurchaseFacadeREST extends AbstractFacade<Purchase> {
     }
 
     @PUT
+    @Secured
     @Path("{id}")
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public void edit(@PathParam("id") int id, Purchase entity) {
