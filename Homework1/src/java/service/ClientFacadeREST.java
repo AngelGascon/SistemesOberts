@@ -21,7 +21,7 @@ import model.entities.Client;
 @Path("client")
 public class ClientFacadeREST extends AbstractFacade<Client> {
 
-    @PersistenceContext(unitName = "Homework1PU")
+    @PersistenceContext(unitName = "sob_grup_12PU")
     private EntityManager em;
 
     public ClientFacadeREST() {

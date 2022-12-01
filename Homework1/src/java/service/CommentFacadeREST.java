@@ -21,7 +21,7 @@ import jakarta.ws.rs.core.Response;
 @Path("comment")
 public class CommentFacadeREST extends AbstractFacade<Comment> {
 
-    @PersistenceContext(unitName = "Homework1PU")
+    @PersistenceContext(unitName = "sob_grup_12PU")
     private EntityManager em;
 
     public CommentFacadeREST() {

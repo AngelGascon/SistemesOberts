@@ -27,7 +27,7 @@ import model.entities.Coin;
 @Path("coin")
 public class CoinFacadeREST extends AbstractFacade<Coin> {
 
-    @PersistenceContext(unitName = "Homework1PU")
+    @PersistenceContext(unitName = "sob_grup_12PU")
     private EntityManager em;
 
     public CoinFacadeREST() {
@@ -66,8 +66,8 @@ public class CoinFacadeREST extends AbstractFacade<Coin> {
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public Response findAll(@QueryParam("order") String order) {
         // https://www.baeldung.com/hibernate-criteria-queries
-        // Homework1/rest/api/v1/coin?order=asc
-        // Homework1/rest/api/v1/coin?order=error
+        // sob_grup_12/rest/api/v1/coin?order=asc
+        // sob_grup_12/rest/api/v1/coin?order=error
         List<Coin> listResult = new ArrayList<>();
         CriteriaBuilder cb = em.getCriteriaBuilder();
         CriteriaQuery<Coin> cq = cb.createQuery(Coin.class);

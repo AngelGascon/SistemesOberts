@@ -28,7 +28,7 @@ import model.entities.Coin;
 @Path("purchase")
 public class PurchaseFacadeREST extends AbstractFacade<Purchase> {
 
-    @PersistenceContext(unitName = "Homework1PU")
+    @PersistenceContext(unitName = "sob_grup_12PU")
     private EntityManager em;
 
     public PurchaseFacadeREST() {
