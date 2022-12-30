@@ -25,7 +25,9 @@
     </servlet-mapping>
     
     <welcome-file-list>
-        <welcome-file>views/signup-form.jsp</welcome-file>
+        <!-- jsp inicial que llisti les monedes en el nostre cas, els fitxers especificats aqui son les llistes incials en base a l'ordre que son especificats -->
+        <welcome-file>/WEB-INF/main.jsp</welcome-file>
+        <!-- editar json en classe controlador i vista nova, i user service que retorni tots els users -->
     </welcome-file-list>
    
 </web-app>

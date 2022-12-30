@@ -63,7 +63,7 @@ public class CoinFacadeREST extends AbstractFacade<Coin> {
     }
 
     @GET
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     public Response findAll(@QueryParam("order") String order) {
         // https://www.baeldung.com/hibernate-criteria-queries
         // sob_grup_12/rest/api/v1/coin?order=asc

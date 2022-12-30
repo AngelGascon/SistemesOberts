@@ -3,6 +3,14 @@
     {
       "URI": "/signUpForm",
       "class": "cat.urv.deim.sob.command.signUpFormCommand" 
+    },
+    {
+      "URI": "/coin",
+      "class": "cat.urv.deim.sob.command.listCoinsCommand" 
+    },
+    {
+        "URI": "/coinInfo",
+        "class": "cat.urv.deim.sob.command.coinInfoCommand" 
     }
   ]
 }

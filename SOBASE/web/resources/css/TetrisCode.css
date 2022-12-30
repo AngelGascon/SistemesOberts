@@ -1,0 +1,93 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 29 dic 2022, 23:49:36
+    Author     : angel
+*/
+
+body,h1,h2,h3,h4,h5,h6,p {font-family: "Lato", sans-serif; color: #F2E8CF;}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 1rem;
+    background-color: #162719;
+}
+
+.Main-Info {
+    text-align: center;
+    padding-top: 3%;
+}
+
+header {
+    padding: 10px;
+    background-color: #F2E8CF;
+}
+
+.header-text-color{
+    color: #162719;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+button:hover {
+    background-color: rgb(139, 139, 139);
+}
+
+.grid {
+    width: 200px;
+    height: 400px;
+    display: flex;
+    flex-wrap: wrap;
+    
+    margin-top: 25px;
+    background-color: #F2E8CF;
+    z-index: -1;
+}
+
+.grid div {
+    height: 20px;
+    width: 20px;
+}
+
+.mini-grid {
+    margin-top: 25px;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #F2E8CF;
+    margin-left: 20px;
+    z-index: -1;
+}
+
+.mini-grid div {
+    height: 20px;
+    width: 20px;
+}
+
+.tetromino {
+    background-color: black;
+}
+
+.controls-box {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    width: 100%;
+    display: flex;
+    justify-content: center; 
+}
+
+@media (max-height: 900px) {
+    footer {
+        position: relative;
+    }
+}
