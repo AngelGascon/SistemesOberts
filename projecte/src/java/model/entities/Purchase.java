@@ -6,12 +6,17 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.NamedQuery;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import java.util.Date;
 
 @Entity
+@NamedQuery(
+            name="getPurchaseFromCoinId",
+            query="SELECT o FROM Purchase o WHERE o.coin.id = :coin_id ORDER BY o.id DESC"
+    )
 @XmlRootElement
 public class Purchase implements Serializable {
     private static final long serialVersionUID = 1L;

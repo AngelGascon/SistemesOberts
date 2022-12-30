@@ -17,7 +17,7 @@
     </head>
     <body>
         <header class="d-flex">
-            <h1 class="p-2 flex-grow-1 header-text-color">CryptoStore</h1>
+            <h1 href="" class="p-2 flex-grow-1 header-text-color">CryptoStore</h1>
             <div class="p-2 " style="width: 50px"></div>
             <h2 class="p-2 header-text-color">Register</h2>
             <div class="p-2" style="width: 50px"></div>
@@ -26,24 +26,29 @@
         </header>
         
         <div class="Main-Info">          
-            <h2 id="order" style="margin-bottom: 50px">Llista de criptomonedes</h2>
-            
-            <c:forEach var="listValue" items="${coinList}">
-                <a href="http://localhost:8080/SOBASE/coinInfo.do?id=${listValue.id}" target="_blank" >
-                    <img id="bitcoin" src='resources/img/${listValue.name}.png' width='80' height='80' /></a>
-                
-                <b style="padding-left: 10px">${listValue.name}</b>
-                </br>
-                </br>
-                ${listValue.description}
-                <p>Price history: ${listValue.lastQuotation}</p><br><br><br><br>
-            </c:forEach>
-        </div>      
+            <img id="bitcoin" src='resources/img/${coin.name}.png' width='80' height='80' />
+            <b style="padding-left: 10px">${coin.name}</b>
+            </br>
+            </br>
+            ${coin.description}
+            <p>Price history: ${coin.lastQuotation}</p><br>
+            <c:if test = "${not empty purchase}">
+                <p>Last transaction: </p>
+            ${purchase.amount} <br>
+            ${purchase.date} <br>
+            </c:if>
+            <c:if test = "${empty purchase}">
+                <p>There is no purchase history of this coin.</p>
+                <p>Be the first!</p>
+            </c:if>
+            <br><br><br>
+            <button >Purchase</button>
+        </div>     
       
     </body>
     
     <script>
-        $( "#order" ).click(function() {
+        $( "#purchase" ).click(function() {
             window.location.replace("http://localhost:8080/SOBASE/coin.do?order=asc");
         });
         

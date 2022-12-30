@@ -1,6 +1,7 @@
 package cat.urv.deim.sob.service;
 
 import cat.urv.deim.sob.model.Coin;
+import cat.urv.deim.sob.model.Purchase;
 import cat.urv.deim.sob.model.User;
 import jakarta.ws.rs.client.WebTarget;
 import jakarta.ws.rs.core.Response;
@@ -31,6 +32,12 @@ public class CoinService {
         WebTarget resource = webTarget.path("coin").path(id);
         Response response = resource.request(MediaType.APPLICATION_JSON).get();
         return (response.getStatus() == 200) ? response.readEntity(Coin.class) : null;
+    }
+    
+    public Purchase getPurchase(String id){
+        WebTarget resource = webTarget.path("coin").path(id).path("purchase");
+        Response response = resource.request(MediaType.APPLICATION_JSON).get();
+        return (response.getStatus() == 200) ? response.readEntity(Purchase.class) : null;
     }
 	
     public boolean addUser(User user) {

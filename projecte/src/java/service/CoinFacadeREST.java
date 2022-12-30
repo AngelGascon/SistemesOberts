@@ -22,6 +22,7 @@ import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.Response.Status;
 import java.util.ArrayList;
 import model.entities.Coin;
+import model.entities.Purchase;
 
 @Stateless
 @Path("coin")
@@ -53,9 +54,20 @@ public class CoinFacadeREST extends AbstractFacade<Coin> {
     public void remove(@PathParam("id") int id) {
         super.remove(super.find(id));
     }
-
+    
     @GET
-    @Secured
+    @Path("{id}/purchase")
+    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    public Response find(@PathParam("id") Integer id) {
+        Purchase purchase = (Purchase) em.createNamedQuery("getPurchaseFromCoinId")
+                .setParameter("coin_id", id)
+                .setMaxResults(1)
+                .getSingleResult();
+        return Response.ok().entity(purchase).build();
+    }
+    
+    @GET
+    //@Secured: Phase 2 is public
     @Path("{id}")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public Response find(@PathParam("id") int id) {

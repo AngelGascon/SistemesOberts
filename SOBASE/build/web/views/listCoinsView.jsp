@@ -29,16 +29,11 @@
             <h2 id="order" style="margin-bottom: 50px">Llista de criptomonedes</h2>
             
             <c:forEach var="listValue" items="${coinList}">
-                <c:if test = "${listValue.name == 'Ethereum'}">
-                <a href="http://localhost:8080/SOBASE/detailedCryptocurrency.do?id=${listValue.id}" target="_blank" >
-                    <img id="ethereum" src='resources/img/ethereum.png' width='80' height='80' /></a>
-                </c:if>
-                <c:if test = "${listValue.name == 'Bitcoin'}">
-                <a href="http://localhost:8080/SOBASE/detailedCryptocurrency.do?id=${listValue.id}" target="_blank" >
-                    <img id="bitcoin" src='resources/img/bitcoin.webp' width='80' height='80' /></a>
-                </c:if>
+                <a href="http://localhost:8080/SOBASE/coinInfo.do?id=${listValue.id}" target="_blank" >
+                    <img id="bitcoin" src='resources/img/${listValue.name}.png' width='80' height='80' /></a>
                 
                 <b style="padding-left: 10px">${listValue.name}</b>
+                </br>
                 </br>
                 ${listValue.description}
                 <p>Price history: ${listValue.lastQuotation}</p><br><br><br><br>

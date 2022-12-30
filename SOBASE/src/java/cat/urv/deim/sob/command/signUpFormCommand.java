@@ -18,8 +18,7 @@ public class signUpFormCommand implements Command {
 
         // 1. Get input
         User user = new User();
-        user.setFirstName(request.getParameter("firstName"));
-        user.setLastName(request.getParameter("lastName"));
+        user.setUsername(request.getParameter("username"));
         user.setEmail(request.getParameter("email"));
         
         String view = "views/signup-success.jsp";
