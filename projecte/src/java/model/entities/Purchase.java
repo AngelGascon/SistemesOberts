@@ -15,7 +15,7 @@ import java.util.Date;
 @Entity
 @NamedQuery(
             name="getPurchaseFromCoinId",
-            query="SELECT o FROM Purchase o WHERE o.coin.id = :coin_id ORDER BY o.id DESC"
+            query="SELECT p FROM Purchase p WHERE p.coin.id = :coin_id ORDER BY p.id DESC"
     )
 @XmlRootElement
 public class Purchase implements Serializable {

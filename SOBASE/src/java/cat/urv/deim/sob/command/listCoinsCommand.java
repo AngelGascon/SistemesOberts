@@ -30,7 +30,5 @@ public class listCoinsCommand implements Command {
         
         RequestDispatcher dispatcher = request.getRequestDispatcher(view);
         dispatcher.forward(request, response);
-        
-        
     }
 }

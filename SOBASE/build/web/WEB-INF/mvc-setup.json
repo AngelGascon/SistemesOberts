@@ -1,8 +1,8 @@
 {
   "commands": [
     {
-      "URI": "/signUpForm",
-      "class": "cat.urv.deim.sob.command.signUpFormCommand" 
+      "URI": "/login",
+      "class": "cat.urv.deim.sob.command.loginCommand" 
     },
     {
       "URI": "/coin",

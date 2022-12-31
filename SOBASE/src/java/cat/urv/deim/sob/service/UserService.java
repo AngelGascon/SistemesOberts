@@ -9,11 +9,22 @@ import jakarta.ws.rs.client.Entity;
 public class UserService {
     private WebTarget webTarget;
     private jakarta.ws.rs.client.Client client;
-    private static final String BASE_URI = "http://localhost:8080/UserService/rest/api";
+    private static final String BASE_URI = "http://localhost:8080/sob_grup_12/rest/api/v1/";
     
     public UserService() {
         client = jakarta.ws.rs.client.ClientBuilder.newClient();
         webTarget = client.target(BASE_URI).path("user");
+    }
+    
+    public Boolean checkAuthentication(String username, String password){
+        
+        //Codif BASE64 TODO
+        
+        Response response = webTarget.path("credentials").path(username).path(password)
+                .request(MediaType.APPLICATION_JSON)
+                .get();
+       
+        return (response.getStatus() == 200);
     }
     
     public User findUserByEmail(User user){
