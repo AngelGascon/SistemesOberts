@@ -1,7 +1,7 @@
 <%-- 
-    Document   : cryptocurrency-list
+    Document   : listCoinsView
     Created on : 15 dic 2022, 16:18:33
-    Author     : marcr
+    Author     : angel
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

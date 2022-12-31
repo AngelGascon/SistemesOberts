@@ -32,12 +32,10 @@ public class CredentialsFacadeREST extends AbstractFacade<Credentials> {
     @GET
     @Path("{username}/{password}")
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-    public Response checkAuthentication(@PathParam("username") String username,
-            @PathParam("password") String password) {
+    public Response checkAuthentication(@PathParam("username") String username, @PathParam("password") String password) {
         
         //Decode Base64 TODO
-        
-        Credentials credentials = (Credentials) em.createNamedQuery("Credentials.findByCustomer")
+        Credentials credentials = (Credentials) em.createNamedQuery("Credentials.findByPasswordAndClient")
                 .setParameter("username", username).setParameter("password", password)
                 .getSingleResult();
         return Response.ok().entity(credentials).build();

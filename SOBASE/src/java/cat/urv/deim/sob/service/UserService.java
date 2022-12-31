@@ -13,23 +13,23 @@ public class UserService {
     
     public UserService() {
         client = jakarta.ws.rs.client.ClientBuilder.newClient();
-        webTarget = client.target(BASE_URI).path("user");
+        webTarget = client.target(BASE_URI);
     }
     
-    public Boolean checkAuthentication(String username, String password){
+    public Boolean loginUser(String username, String password){
         
         //Codif BASE64 TODO
         
         Response response = webTarget.path("credentials").path(username).path(password)
                 .request(MediaType.APPLICATION_JSON)
                 .get();
-       
-        return (response.getStatus() == 200);
+
+        return response.getStatus() == 200;
     }
     
     public User findUserByEmail(User user){
         String email = user.getEmail();
-        Response response = webTarget.path(email)
+        Response response = webTarget.path("user").path(email)
                 .request(MediaType.APPLICATION_JSON)
                 .get();
         if (response.getStatus() == 200) {
@@ -39,7 +39,7 @@ public class UserService {
     }
 	
     public boolean addUser(User user) {
-       Response response = webTarget.request(MediaType.APPLICATION_JSON)
+       Response response = webTarget.path("user").request(MediaType.APPLICATION_JSON)
                .post(Entity.entity(user, MediaType.APPLICATION_JSON), 
                     Response.class);
      return response.getStatus() == 201;

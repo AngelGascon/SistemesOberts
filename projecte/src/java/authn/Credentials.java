@@ -8,6 +8,8 @@ import model.entities.Client;
 @Entity
 @NamedQuery(name="Credentials.findByClient", 
             query="SELECT c FROM Credentials c WHERE c.client.id = :cid")
+@NamedQuery(name="Credentials.findByPasswordAndClient", 
+            query="SELECT c FROM Credentials c WHERE c.password =:password AND c.client.name =:username")
 @XmlRootElement
 public class Credentials implements Serializable { 
     @Id

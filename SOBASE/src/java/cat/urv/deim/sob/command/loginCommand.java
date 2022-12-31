@@ -1,8 +1,6 @@
 package cat.urv.deim.sob.command;
 
-import cat.urv.deim.sob.model.Coin;
 import cat.urv.deim.sob.model.User;
-import cat.urv.deim.sob.service.CoinService;
 import cat.urv.deim.sob.service.UserService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -20,22 +18,31 @@ public class loginCommand implements Command {
         
         User user = new User();
         String username = request.getParameter("username");
-        String email = request.getParameter("user.email");
-        String password = request.getParameter("user.password");
-        //String cryptoId = request.getParameter("id");
-        /*
-        user.setPassword(password);
-        user.setUsername(username);
-        user.setEmail(email);*/
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
+        
      
         String view = "views/loginView.jsp";
-        if (username != null) {
-            request.setAttribute("message", "tot ok");
-        }else{
-            request.setAttribute("message", "Some fields are missing.");
+        //Checks nulls
+        if (username != null && password != null && email != null) {
+            //Checks empty strings
+            if(username.isEmpty() || password.isEmpty() || email.isEmpty()){
+                request.setAttribute("message", "Some fields are missing is empty.");
+            }else{
+                //
+                UserService us = new UserService();
+                boolean authRes = us.loginUser(username, password);
+                if (authRes) {
+                    view = "views/loginSuccessView.jsp";
+                    user.setAuth(true);
+                    request.setAttribute("currentUser", user);
+                    request.setAttribute("message", "tot ok");
+                }else{
+                    request.setAttribute("message", "user or password incorrect.");
+                }
+                //
+            }
         }
-        
-    //}
         //request.setAttribute("cryptoId", Integer.valueOf(cryptoId));
         RequestDispatcher dispatcher = request.getRequestDispatcher(view);
         dispatcher.forward(request, response);

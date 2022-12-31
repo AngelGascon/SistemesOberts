@@ -1,3 +1,9 @@
+<%-- 
+    Document   : loginView
+    Created on : 31 dic 2022, 11:30:24
+    Author     : angel
+--%>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -30,13 +36,13 @@
 						<div class="form-group">
 							<label for="username" class="col-md-3 control-label">Username</label>
 							<div class="col-md-9">
-								<input type="text" name="firstName" value="${user.username}" class="form-control" />
+								<input type="text" name="username" value="${user.username}" class="form-control" />
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="password" class="col-md-3 control-label">Password</label>
 							<div class="col-md-9">
-								<input type="text" name="lastName" value="${user.password}" class="form-control" />
+								<input type="text" name="password" value="${user.password}" class="form-control" />
 							</div>
 						</div>
 						<div class="form-group">
