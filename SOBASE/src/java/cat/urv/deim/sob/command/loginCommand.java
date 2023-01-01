@@ -18,15 +18,14 @@ public class loginCommand implements Command {
         
         User user = new User();
         String username = request.getParameter("username");
-        String email = request.getParameter("email");
         String password = request.getParameter("password");
         
      
         String view = "views/loginView.jsp";
         //Checks nulls
-        if (username != null && password != null && email != null) {
+        if (username != null && password != null) {
             //Checks empty strings
-            if(username.isEmpty() || password.isEmpty() || email.isEmpty()){
+            if(username.isEmpty() || password.isEmpty()){
                 request.setAttribute("message", "Some fields are missing is empty.");
             }else{
                 //
@@ -35,6 +34,8 @@ public class loginCommand implements Command {
                 if (authRes) {
                     view = "views/loginSuccessView.jsp";
                     user.setAuth(true);
+                    user.setUsername(username);
+                    user.setPassword(password);
                     request.setAttribute("currentUser", user);
                     request.setAttribute("message", "tot ok");
                 }else{

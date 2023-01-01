@@ -42,7 +42,7 @@
                 <p>Be the first!</p>
             </c:if>
             <br><br><br>
-            <button >Purchase</button>
+            <button id="purchase">Purchase</button>
         </div>     
       
     </body>

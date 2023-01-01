@@ -17,7 +17,7 @@
     </head>
     <body>
         <header class="d-flex">
-            <h1 href="http://localhost:8080/SOBASE/coin.do" class="p-2 flex-grow-1 header-text-color">CryptoStore</h1>
+            <h1 class="p-2 flex-grow-1 header-text-color"><a href="http://localhost:8080/SOBASE/coin.do" style="text-decoration: none; color: inherit">CryptoStore</a></h1>
             <div class="p-2 " style="width: 50px"></div>
             <h2 class="p-2 header-text-color">Register</h2>
             <div class="p-2" style="width: 50px"></div>

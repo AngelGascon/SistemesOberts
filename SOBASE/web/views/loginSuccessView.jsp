@@ -22,8 +22,10 @@
     <header class="d-flex">
         <h1 class="p-2 flex-grow-1 header-text-color"><a href="http://localhost:8080/SOBASE/coin.do" style="text-decoration: none; color: inherit">CryptoStore</a></h1>
     </header>
-    <div class="container Main-Info">
-           
+    <div class="container Main-Info" style="font-size: 18px;">
+        <p>First Name: ${currentUser.username}</p>
+        <p>Password: ${currentUser.password}</p>
+        <p>Authenticated: ${currentUser.auth}</p>
     </div>
 </body>
 </html>
