@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.ServletException;
 import java.io.IOException;
 import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.http.HttpSession;
 
 public class coinInfoCommand implements Command {
 
@@ -18,7 +19,12 @@ public class coinInfoCommand implements Command {
             throws ServletException, IOException {
         
         String coinId = request.getParameter("id");
-        String authenticated = request.getParameter("authenticated");
+        
+        HttpSession sesion = request.getSession(true);
+        String goBack = request.getRequestURL().toString()+"?id="+coinId;
+        sesion.setAttribute("goBack", goBack);
+        
+        //String authenticated = request.getParameter("authenticated");
         
         String view = "views/oneCoinView.jsp";
         
@@ -32,7 +38,7 @@ public class coinInfoCommand implements Command {
             request.setAttribute("purchase", purchase);
         
         request.setAttribute("coinId", coinId);
-        request.setAttribute("authenticated", authenticated);
+        //request.setAttribute("authenticated", authenticated);
         
         RequestDispatcher dispatcher = request.getRequestDispatcher(view);
         dispatcher.forward(request, response);

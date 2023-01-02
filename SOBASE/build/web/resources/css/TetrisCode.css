@@ -38,61 +38,16 @@ footer {
     margin-bottom: 25px;
 }
 
-a.button {
-    -webkit-appearance: button;
-    -moz-appearance: button;
-    appearance: button;
-
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
     text-decoration: none;
-    color: initial;
-}
-
-button:hover {
-    background-color: rgb(139, 139, 139);
-}
-
-.grid {
-    width: 200px;
-    height: 400px;
-    display: flex;
-    flex-wrap: wrap;
-    
-    margin-top: 25px;
-    background-color: #F2E8CF;
-    z-index: -1;
-}
-
-.grid div {
-    height: 20px;
-    width: 20px;
-}
-
-.mini-grid {
-    margin-top: 25px;
-    width: 80px;
-    height: 80px;
-    display: flex;
-    flex-wrap: wrap;
-    background-color: #F2E8CF;
-    margin-left: 20px;
-    z-index: -1;
-}
-
-.mini-grid div {
-    height: 20px;
-    width: 20px;
-}
-
-.tetromino {
-    background-color: black;
-}
-
-.controls-box {
-    margin-top: 30px;
-    margin-bottom: 30px;
-    width: 100%;
-    display: flex;
-    justify-content: center; 
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 9999px;
 }
 
 @media (max-height: 900px) {

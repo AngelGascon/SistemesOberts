@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.ServletException;
 import java.io.IOException;
 import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.http.HttpSession;
 import java.util.List;
 
 public class listCoinsCommand implements Command {
@@ -17,20 +18,19 @@ public class listCoinsCommand implements Command {
             HttpServletResponse response)
             throws ServletException, IOException {
         
-        String order = request.getParameter("order");
-        if (order == null) order = "desc";
+        HttpSession sesion = request.getSession(true);
+        String goBack = request.getRequestURL().toString();
+        sesion.setAttribute("goBack", goBack);
         
-        String auth = request.getParameter("currentUser");
+        String order = request.getParameter("order");
+        if (order == null) 
+            order = "desc";
+
+        CoinService cs = new CoinService();
+        List <Coin> list = cs.findAll(order);
+        request.setAttribute("coinList", list);
         
         String view = "views/listCoinsView.jsp";
-        
-        CoinService cs = new CoinService();
- 
-        List <Coin> list = cs.findAll(order);
-        
-        request.setAttribute("coinList", list);
-        request.setAttribute("auth", auth);
-        
         RequestDispatcher dispatcher = request.getRequestDispatcher(view);
         dispatcher.forward(request, response);
     }
