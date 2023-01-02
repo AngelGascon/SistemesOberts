@@ -35,7 +35,7 @@
             <h2 id="order" style="margin-bottom: 50px">Cryptocurrency Available</h2>
             
             <c:forEach var="listValue" items="${coinList}">
-                <a href="http://localhost:8080/SOBASE/coinInfo.do?id=${listValue.id}" target="_blank" >
+                <a href="http://localhost:8080/SOBASE/coinInfo.do?id=${listValue.id}" >
                     <img src='resources/img/${listValue.name}.png' width='80' height='80' /></a>
                 
                 <b style="padding-left: 10px">${listValue.name}</b>
@@ -49,8 +49,13 @@
     </body>
     
     <script>
-        $( "#order" ).click(function() {
-            window.location.replace("http://localhost:8080/SOBASE/coin.do?order=asc");
+        $("#order").click(function () {
+            let searchParams = new URLSearchParams(window.location.search);
+            if (searchParams.get('order') === "asc") {
+                window.location.replace("http://localhost:8080/SOBASE/coin.do?order=desc");
+            } else {
+                window.location.replace("http://localhost:8080/SOBASE/coin.do?order=asc");
+            }
         });
     </script>
 </html>
