@@ -19,10 +19,16 @@
         <header class="d-flex">
             <h1 class="p-2 flex-grow-1 header-text-color"><a href="http://localhost:8080/SOBASE/coin.do" style="text-decoration: none; color: inherit">CryptoStore</a></h1>
             <div class="p-2 " style="width: 50px"></div>
-            <h2 class="p-2 header-text-color">Register</h2>
-            <div class="p-2" style="width: 50px"></div>
-            <h2 class="p-2 header-text-color"><a href="http://localhost:8080/SOBASE/login.do" style="text-decoration: none; color: inherit">Login</a></h2>
-            <div class="p-2" style="width: 50px"></div>
+            <c:if test = "${not empty client}">
+                <h2 class="p-2 header-text-color"> Welcome, ${client.name}. </h2>    <!--//TODO show profile-->
+                <div class="p-2" style="width: 50px"></div>
+            </c:if>
+            <c:if test = "${empty client}">
+                <h2 class="p-2 header-text-color">Register</h2>
+                <div class="p-2" style="width: 50px"></div>
+                <h2 class="p-2 header-text-color"><a href="http://localhost:8080/SOBASE/login.do" style="text-decoration: none; color: inherit">Login</a></h2>
+                <div class="p-2" style="width: 50px"></div>
+            </c:if>
         </header>
         
         <div class="Main-Info">          
@@ -38,9 +44,6 @@
                 ${listValue.description}
                 <p>Price history: ${listValue.lastQuotation}</p><br><br><br><br>
             </c:forEach>
-            <c:if test = "${not empty auth}">
-                <p>${auth.username} </p>
-            </c:if>
         </div>      
       
     </body>
@@ -49,6 +52,5 @@
         $( "#order" ).click(function() {
             window.location.replace("http://localhost:8080/SOBASE/coin.do?order=asc");
         });
-        
     </script>
 </html>

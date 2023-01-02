@@ -7,6 +7,9 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.ServletException;
 import java.io.IOException;
 import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.http.HttpSession;
+import cat.urv.deim.sob.model.Client;
+import cat.urv.deim.sob.model.Credentials;
 
 public class loginCommand implements Command {
 
@@ -15,12 +18,11 @@ public class loginCommand implements Command {
             HttpServletRequest request,
             HttpServletResponse response)
             throws ServletException, IOException {
-        
-        User user = new User();
+
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         
-     
+        HttpSession sesion = request.getSession(true);
         String view = "views/loginView.jsp";
         //Checks nulls
         if (username != null && password != null) {
@@ -30,13 +32,16 @@ public class loginCommand implements Command {
             }else{
                 //
                 UserService us = new UserService();
-                boolean authRes = us.loginUser(username, password);
-                if (authRes) {
+                Client client = us.loginUser(username, password);
+                if (client != null) {
                     view = "views/loginSuccessView.jsp";
-                    user.setAuth(true);
-                    user.setUsername(username);
-                    user.setPassword(password);
-                    request.setAttribute("currentUser", user);
+                    sesion.setAttribute("client", client);
+                    client.setAuth(true);
+                    
+                    Credentials cred = new Credentials();
+                    cred.setPassword(password);
+                    
+                    client.setPassword(cred);
                     request.setAttribute("message", "tot ok");
                 }else{
                     request.setAttribute("message", "user or password incorrect.");

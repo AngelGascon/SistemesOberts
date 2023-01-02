@@ -38,7 +38,8 @@ public class CredentialsFacadeREST extends AbstractFacade<Credentials> {
         Credentials credentials = (Credentials) em.createNamedQuery("Credentials.findByPasswordAndClient")
                 .setParameter("username", username).setParameter("password", password)
                 .getSingleResult();
-        return Response.ok().entity(credentials).build();
+        Client client = credentials.getClient();
+        return Response.ok().entity(client).build();
     }
     
     @Override

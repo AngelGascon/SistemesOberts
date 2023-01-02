@@ -23,10 +23,12 @@
         <h1 class="p-2 flex-grow-1 header-text-color"><a href="http://localhost:8080/SOBASE/coin.do" style="text-decoration: none; color: inherit">CryptoStore</a></h1>
     </header>
     <div class="container Main-Info" style="font-size: 18px;">
-        <p>First Name: ${currentUser.username}</p>
-        <p>Password: ${currentUser.password}</p>
-        <p>Authenticated: ${currentUser.auth}</p>
-        <a class="button" href="<c:url value="/coin.do?currentUser=${currentUser}" />">Go Back</a>
+        <p>First Name: ${client.name}</p>
+        <p>Email: ${client.email}</p>
+        <p>Phone: ${client.phone}</p>
+        <p>Password: ${client.password.password}</p>
+        <p>Authenticated: ${client.auth}</p>
+        <a class="button" href="<c:url value="/coin.do" />">Go Back</a>
     </div>
 </body>
 </html>

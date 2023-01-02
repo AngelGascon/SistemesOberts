@@ -10,36 +10,14 @@ package cat.urv.deim.sob.model;
  */
 public class Credentials {
     
-    private Long id;
-    private Client client;
     private String password;
 
     public Credentials() {
     }
-
-    public Long getId() {
-        return id;
-    }
-
-    public Client getClient() {
-        return client;
-    }
-
     public String getPassword() {
         return password;
     }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public void setClient(Client client) {
-        this.client = client;
-    }
-
     public void setPassword(String password) {
         this.password = password;
     }
-    
-    
 }

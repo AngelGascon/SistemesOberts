@@ -13,6 +13,7 @@ public class Client {
     private Credentials password;
     private boolean auth;
     private String phone;
+    private String email;
 
     public Client() {
     }
@@ -47,6 +48,14 @@ public class Client {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
     
 }

@@ -1,5 +1,6 @@
 package cat.urv.deim.sob.service;
 
+import cat.urv.deim.sob.model.Client;
 import cat.urv.deim.sob.model.User;
 import jakarta.ws.rs.client.WebTarget;
 import jakarta.ws.rs.core.Response;
@@ -16,15 +17,16 @@ public class UserService {
         webTarget = client.target(BASE_URI);
     }
     
-    public Boolean loginUser(String username, String password){
+    public Client loginUser(String username, String password){
         
         //Codif BASE64 TODO
         
         Response response = webTarget.path("credentials").path(username).path(password)
                 .request(MediaType.APPLICATION_JSON)
                 .get();
-
-        return response.getStatus() == 200;
+        
+        
+        return (response.getStatus() == 200) ? response.readEntity(Client.class) : null;
     }
     
     public User findUserByEmail(User user){
