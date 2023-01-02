@@ -20,6 +20,8 @@ public class listCoinsCommand implements Command {
         String order = request.getParameter("order");
         if (order == null) order = "desc";
         
+        String auth = request.getParameter("currentUser");
+        
         String view = "views/listCoinsView.jsp";
         
         CoinService cs = new CoinService();
@@ -27,6 +29,7 @@ public class listCoinsCommand implements Command {
         List <Coin> list = cs.findAll(order);
         
         request.setAttribute("coinList", list);
+        request.setAttribute("auth", auth);
         
         RequestDispatcher dispatcher = request.getRequestDispatcher(view);
         dispatcher.forward(request, response);

@@ -44,7 +44,6 @@ public class loginCommand implements Command {
                 //
             }
         }
-        //request.setAttribute("cryptoId", Integer.valueOf(cryptoId));
         RequestDispatcher dispatcher = request.getRequestDispatcher(view);
         dispatcher.forward(request, response);
     }

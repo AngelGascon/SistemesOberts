@@ -26,6 +26,7 @@
         <p>First Name: ${currentUser.username}</p>
         <p>Password: ${currentUser.password}</p>
         <p>Authenticated: ${currentUser.auth}</p>
+        <a class="button" href="<c:url value="/coin.do?currentUser=${currentUser}" />">Go Back</a>
     </div>
 </body>
 </html>

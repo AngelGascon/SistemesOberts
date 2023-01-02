@@ -26,11 +26,11 @@
         </header>
         
         <div class="Main-Info">          
-            <h2 id="order" style="margin-bottom: 50px">Llista de criptomonedes</h2>
+            <h2 id="order" style="margin-bottom: 50px">Cryptocurrency Available</h2>
             
             <c:forEach var="listValue" items="${coinList}">
                 <a href="http://localhost:8080/SOBASE/coinInfo.do?id=${listValue.id}" target="_blank" >
-                    <img id="bitcoin" src='resources/img/${listValue.name}.png' width='80' height='80' /></a>
+                    <img src='resources/img/${listValue.name}.png' width='80' height='80' /></a>
                 
                 <b style="padding-left: 10px">${listValue.name}</b>
                 </br>
@@ -38,6 +38,9 @@
                 ${listValue.description}
                 <p>Price history: ${listValue.lastQuotation}</p><br><br><br><br>
             </c:forEach>
+            <c:if test = "${not empty auth}">
+                <p>${auth.username} </p>
+            </c:if>
         </div>      
       
     </body>
