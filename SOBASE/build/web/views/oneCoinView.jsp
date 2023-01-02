@@ -21,7 +21,18 @@
             <div class="p-2 " style="width: 50px"></div>
             <c:if test = "${not empty client}">
                 <h2 class="p-2 header-text-color"> Welcome, ${client.name}. </h2>    <!--//TODO show profile-->
-                <div class="p-2" style="width: 50px"></div>
+                <div class="p-2" style="width: 25px"></div>
+                <div class="p-2 header-text-color">
+                    <div class="dropdown">
+                    <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown">
+                      My profile
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item">Email: ${client.email}</a></li>
+                      <li><a class="dropdown-item">Phone: ${client.phone}</a></li>
+                    </ul>
+                  </div>    <!--//TODO show profile-->
+                <div class="p-2" style="width: 100px"></div>
             </c:if>
             <c:if test = "${empty client}">
                 <h2 class="p-2 header-text-color">Register</h2>
