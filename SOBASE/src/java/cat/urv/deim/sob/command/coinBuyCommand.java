@@ -10,7 +10,11 @@ import java.io.IOException;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.http.HttpSession;
 
-public class coinInfoCommand implements Command {
+/**
+ *
+ * @author angel
+ */
+public class coinBuyCommand implements Command {
 
     @Override
     public void execute(
@@ -18,13 +22,13 @@ public class coinInfoCommand implements Command {
             HttpServletResponse response)
             throws ServletException, IOException {
         
+        String view = "views/buyCoinView.jsp";
+        /*
         String coinId = request.getParameter("id");
         
         HttpSession sesion = request.getSession(true);
         String goBack = request.getRequestURL().toString()+"?id="+coinId;
         sesion.setAttribute("goBack", goBack);
-        
-        String view = "views/oneCoinView.jsp";
         
         CoinService cs = new CoinService();
         
@@ -36,7 +40,7 @@ public class coinInfoCommand implements Command {
             request.setAttribute("purchase", purchase);
         
         request.setAttribute("coinId", coinId);
-        
+        */
         RequestDispatcher dispatcher = request.getRequestDispatcher(view);
         dispatcher.forward(request, response);
     }

@@ -11,6 +11,10 @@
     {
         "URI": "/coinInfo",
         "class": "cat.urv.deim.sob.command.coinInfoCommand" 
+    },
+    {
+        "URI": "/coinBuy",
+        "class": "cat.urv.deim.sob.command.coinBuyCommand" 
     }
   ]
 }

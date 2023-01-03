@@ -11,7 +11,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <link href="<c:url value="/resources/css/TetrisCode.css" />" rel="stylesheet">
         <title>CryptoStore: coinList</title>
     </head>
@@ -59,15 +60,13 @@
                 <p>Be the first!</p>
             </c:if>
             <br><br><br>
-            <button id="purchase">Purchase</button>
+            <c:if test = "${not empty client}">
+                <a class="btn btn-success" href="http://localhost:8080/SOBASE/coinBuy.do" role="button">Purchase</a>
+            </c:if>
+            <c:if test = "${empty client}">
+                <a class="btn btn-success" href="http://localhost:8080/SOBASE/login.do" role="button">Purchase</a>
+            </c:if>
         </div>     
       
     </body>
-    
-    <script>
-        $( "#purchase" ).click(function() {
-            window.location.replace("http://localhost:8080/SOBASE/coin.do?order=asc");
-        });
-        
-    </script>
 </html>

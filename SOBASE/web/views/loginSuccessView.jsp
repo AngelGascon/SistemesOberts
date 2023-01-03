@@ -28,15 +28,7 @@
         <p>Phone: ${client.phone}</p>
         <p>Password: ${client.password.password}</p>
         <p>Authenticated: ${client.auth}</p>
-        <a class="button" href="${goBack}" style="background-color: #4CAF50; /* Green */
-                                                border: none;
-                                                color: black;
-                                                padding: 15px 32px;
-                                                text-align: center;
-                                                text-decoration: none;
-                                                display: inline-block;
-                                                font-size: 16px;
-                                                border-radius: 9999px;"> Go Back</a>
+        <a href="${goBack}" class="btn btn-success" href="login.do" role="button"> Go Back</a>
     </div>
 </body>
 </html>
