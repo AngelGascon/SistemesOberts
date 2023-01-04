@@ -61,7 +61,7 @@
             </c:if>
             <br><br><br>
             <c:if test = "${not empty client}">
-                <a class="btn btn-success" href="http://localhost:8080/SOBASE/coinBuy.do" role="button">Purchase</a>
+                <a class="btn btn-success" href="http://localhost:8080/SOBASE/coinBuy.do?id=${param.id}" role="button">Purchase</a>
             </c:if>
             <c:if test = "${empty client}">
                 <a class="btn btn-success" href="http://localhost:8080/SOBASE/login.do" role="button">Purchase</a>
