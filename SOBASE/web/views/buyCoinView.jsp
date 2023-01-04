@@ -33,9 +33,8 @@
                                     <div class="panel-title">How many {coingeneric} do you want?</div>
                             </div>
                         <div class="panel-body" style="color:black; font-size: 15px">
-                                    <form action="coinBuy.do" class="form-horizontal"
+                                    <form action="coinBuy.do?id=${param.id}" class="form-horizontal"
                                             method="post">
-
                                             <div class="form-group">
                                                     <label for="username" class="col-md-3 control-label">Amount</label>
                                                     <div class="col-md-9">
