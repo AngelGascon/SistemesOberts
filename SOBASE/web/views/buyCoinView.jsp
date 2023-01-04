@@ -30,7 +30,7 @@
                     <h2 class="text-center">Buying</h2>
                     <div class="panel panel-info">
                             <div class="panel-heading">
-                                    <div class="panel-title">How many {coingeneric} do you want?</div>
+                                <div class="panel-title">How many ${coin.name} do you want?</br>Current price: ${coin.lastQuotation}</div>
                             </div>
                         <div class="panel-body" style="color:black; font-size: 15px">
                                     <form action="coinBuy.do?id=${param.id}" class="form-horizontal"
@@ -43,15 +43,20 @@
                                             </div>
                                             <div class="form-group">
                                                     <!-- Button -->
-                                                    <div class="col-md-offset-3 col-md-9">
+                                                    <div class="justify-content-center">
                                                             <input type="submit" value="Submit" />
                                                     </div>
                                             </div>
                                     <form>
                                     <c:if test="${not empty purchase}">
                                         <div class="alert alert-success" role="alert">
-                                            ${purchase}
+                                            Purchase done:</br>
+                                            ${coin.name}</br>
+                                            ${purchase.amount}</br>
+                                            ${purchase.date}</br>
+                                            ${client.name}
                                         </div>
+                                        <a href="${goBack}" class="btn btn-success" role="button"> Go Back</a>
                                     </c:if>
                             </div>
                     </div>

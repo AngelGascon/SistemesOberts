@@ -28,7 +28,7 @@
         <p>Phone: ${client.phone}</p>
         <p>Password: ${client.password.password}</p>
         <p>Authenticated: ${client.auth}</p>
-        <a href="${goBack}" class="btn btn-success" href="login.do" role="button"> Go Back</a>
+        <a href="${goBack}" class="btn btn-success" role="button"> Go Back</a>
     </div>
 </body>
 </html>

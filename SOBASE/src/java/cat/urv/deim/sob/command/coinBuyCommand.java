@@ -27,6 +27,11 @@ public class coinBuyCommand implements Command {
         
         String coinId = request.getParameter("id");
         String amount = request.getParameter("amount");
+        
+        CoinService cs = new CoinService();
+        Coin coin = cs.getCoin(coinId);
+        request.setAttribute("coin", coin);
+        
         HttpSession sesion = request.getSession(true);
         Client client = (Client) sesion.getAttribute("client");
 
