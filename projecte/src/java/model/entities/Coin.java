@@ -7,6 +7,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.NamedQuery;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.xml.bind.annotation.XmlRootElement;
@@ -29,11 +30,9 @@ public class Coin implements Serializable {
     private String description;
     private Float lastQuotation;
     private Date currentDate;
-    
-    @ManyToMany
-    private Collection<Client> clients;
-    @OneToOne(mappedBy = "coin")
-    private Purchase purchase;
+   
+    @OneToMany(mappedBy = "coin")
+    private Collection<Purchase> purchases;
 
     public static long getSerialVersionUID() {
         return serialVersionUID;

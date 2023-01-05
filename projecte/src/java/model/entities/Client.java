@@ -44,14 +44,11 @@ public class Client implements Serializable {
     @NotNull(message="Phone has to be set.")
     private String phone;
     
-    @ManyToMany(mappedBy = "clients")
-    final private Collection<Coin> coins;
     @OneToMany(mappedBy = "client")
     final private Collection<Purchase> purchases;
     
     public Client() {
         this.purchases = new ArrayList<>();
-        this.coins = new ArrayList<>();
     }
 
     public static long getSerialVersionUID() {

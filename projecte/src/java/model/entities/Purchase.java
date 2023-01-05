@@ -26,7 +26,7 @@ public class Purchase implements Serializable {
     private int id;
     private float amount;
     private Date date;
-    @OneToOne
+    @ManyToOne
     private Coin coin;
     @ManyToOne
     private Client client;
