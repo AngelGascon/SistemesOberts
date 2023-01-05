@@ -1,5 +1,6 @@
 package service;
 
+import authn.RESTRequestFilter;
 import jakarta.ws.rs.core.Application;
 import java.util.HashSet;
 import java.util.Set;
@@ -14,7 +15,7 @@ public class RESTapp extends Application {
         classes.add(ClientFacadeREST.class);
         classes.add(PurchaseFacadeREST.class);
         classes.add(CredentialsFacadeREST.class);
-        //classes.add(RESTRequestFilter.class);
+        classes.add(RESTRequestFilter.class);
         return classes;
     }
 }
