@@ -46,14 +46,15 @@
         <div class="Main-Info">          
             <h2 id="order" style="margin-bottom: 50px">Cryptocurrency Available</h2>
             <c:forEach var="listValue" items="${coinList}">
-                <a href="coinInfo.do?id=${listValue.id}" >
+                <div class="p-2 m-1">
+                    <a href="coinInfo.do?id=${listValue.id}" >
                     <img src='resources/img/${listValue.name}.png' width='80' height='80' /></a>
-                
-                <b style="padding-left: 10px">${listValue.name}</b>
-                </br>
-                </br>
-                ${listValue.description}
-                <p>Price history: ${listValue.lastQuotation}</p><br><br><br><br>
+                    <b style="padding-left: 10px">${listValue.name}</b>
+                    </br>
+                    </br>
+                    ${listValue.description}
+                    <p>Price history: ${listValue.lastQuotation} €</p><br><br><br><br>
+                </div>
             </c:forEach>
         </div>
     </body>

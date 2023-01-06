@@ -4,14 +4,13 @@
     Author     : angel
 --%>
 
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Buy Crypto</title>
+<title>CryptoStore: buyCrypto</title>
 <link href="<c:url value="/resources/css/bootstrap.min.css" />"
 	rel="stylesheet">
 <script src="<c:url value="/resources/js/jquery-1.11.1.min.js" />"></script>
@@ -30,7 +29,7 @@
                     <h2 class="text-center">Buying</h2>
                     <div class="panel panel-info">
                             <div class="panel-heading">
-                                <div class="panel-title">How many ${coin.name} do you want?</br>Current price: ${coin.lastQuotation}</div>
+                                <div class="panel-title">How many ${coin.name} do you want?</br>Current price: ${coin.lastQuotation} €</div>
                             </div>
                         <div class="panel-body" style="color:black; font-size: 15px">
                                     <form action="coinBuy.do?id=${param.id}" class="form-horizontal"
@@ -44,7 +43,7 @@
                                             <div class="form-group">
                                                     <!-- Button -->
                                                     <div class="justify-content-center">
-                                                            <input type="submit" value="Submit" />
+                                                            <input type="submit" value="Submit"/>
                                                     </div>
                                             </div>
                                     <form>
@@ -52,7 +51,7 @@
                                         <div class="alert alert-success" role="alert">
                                             Purchase done:</br>
                                             ${coin.name}</br>
-                                            ${purchase.amount}</br>
+                                            ${purchase.amount} €</br>
                                             ${purchase.date}</br>
                                             ${client.name}
                                         </div>

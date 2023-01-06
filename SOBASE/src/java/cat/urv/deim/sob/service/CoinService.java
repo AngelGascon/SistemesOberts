@@ -14,7 +14,6 @@ public class CoinService {
     private WebTarget webTarget;
     private jakarta.ws.rs.client.Client client;
     private static final String BASE_URI = "http://localhost:8080/sob_grup_12/rest/api/v1/";
-    private final String credentials = "c29iOnNvYgo=";
     
     public CoinService() {
         client = jakarta.ws.rs.client.ClientBuilder.newClient();

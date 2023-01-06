@@ -41,8 +41,10 @@
                 "INSERT INTO " + schema + ".CREDENTIALS VALUES (NEXT VALUE FOR CREDENTIALS_GEN, 'password', 1)",
                 "INSERT INTO " + schema + ".CLIENT VALUES (NEXT VALUE FOR CLIENT_GEN, 'sob', 'sob', '600100200')",
                 "INSERT INTO " + schema + ".CREDENTIALS VALUES (NEXT VALUE FOR CREDENTIALS_GEN, 'sob', 2)",
-                "INSERT INTO " + schema + ".COIN VALUES (NEXT VALUE FOR COIN_GEN, '2016-03-02 11:24:00.772000000', 'Generic description.', 500000.0, 'Bitcoin')",
-                "INSERT INTO " + schema + ".COIN VALUES (NEXT VALUE FOR COIN_GEN, '2021-07-02 8:24:00.772000000', 'Generic description 2.', 4000.0, 'Ethereum')",
+                "INSERT INTO " + schema + ".COIN VALUES (NEXT VALUE FOR COIN_GEN, '2022-03-02 11:24:00.772000000', 'Bitcoin (BTC) is a cryptocurrency, a virtual currency designed to act as money and a form of payment outside the control of any one person, group, or entity, thus removing the need for third-party involvement in financial transactions.', 15000.0, 'Bitcoin')",
+                "INSERT INTO " + schema + ".COIN VALUES (NEXT VALUE FOR COIN_GEN, '2022-07-02 8:54:00.772000000', 'Ether (ETH) is the native cryptocurrency that powers Ethereum. It is primarily used to pay transaction fees and the creation of blockchain smart contracts.', 2000.0, 'Ethereum')",
+                "INSERT INTO " + schema + ".COIN VALUES (NEXT VALUE FOR COIN_GEN, '2022-05-02 1:22:00.772000000', 'Dogecoin is an opensource cryptocurrency established in 2013 by Jackson Palmer and Billy Markus.', 85.0, 'Dogecoin')",
+                "INSERT INTO " + schema + ".COIN VALUES (NEXT VALUE FOR COIN_GEN, '2021-06-02 7:00:00.772000000', 'Sweatcoin is an exercise app that tracks your steps and pays you in Sweatcoins a type of cryptocurrency each time you walk 1000 steps.', 2.5, 'Sweatcoin')",
                 "INSERT INTO " + schema + ".PURCHASE VALUES (NEXT VALUE FOR PURCHASE_GEN, 6000.0, '2021-05-02 09:30:00.222000000',1,1)"
             };
             for (String datum : data) {

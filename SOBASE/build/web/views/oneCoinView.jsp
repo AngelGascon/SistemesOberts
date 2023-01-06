@@ -14,7 +14,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <link href="<c:url value="/resources/css/TetrisCode.css" />" rel="stylesheet">
-        <title>CryptoStore: coinList</title>
+        <title>CryptoStore: oneCoin</title>
     </head>
     <body>
         <header class="d-flex">
@@ -52,7 +52,7 @@
             <p>Price history: ${coin.lastQuotation}</p><br>
             <c:if test = "${not empty purchase}">
                 <p>Last transaction: </p>
-            ${purchase.amount} <br>
+            ${purchase.amount} € <br>
             ${purchase.date} <br>
             </c:if>
             <c:if test = "${empty purchase}">
